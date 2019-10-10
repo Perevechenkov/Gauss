@@ -117,5 +117,6 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
         //хммммммм :3
+        //UwU
     }
 }
