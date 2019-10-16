@@ -49,6 +49,7 @@ namespace ConsoleApp1
                         }
                     }
                 }
+                Console.WriteLine("{0} - иттерация приведения к ступенчатому виду", iteration + 1);
                 Print(mat, rows, columns);
             }
             var solution = new double[columns - 1];
@@ -68,7 +69,7 @@ namespace ConsoleApp1
 
         public static void Print(double[,] matrix, int rows, int columns)
         {
-            Console.WriteLine();
+            //Console.WriteLine();
             for (var i = 0; i < rows; i++)
             {
                 for (var j = 0; j < columns; j++)
@@ -112,7 +113,7 @@ namespace ConsoleApp1
             var solution = GaussMethod(mat, 3, 4);
             for (var i = 0; i < solution.Length; i++)
             {
-                Console.WriteLine("X{0} = {1}", i + 1, solution[i]);
+                Console.WriteLine("Переменная - X{0} = {1}", i + 1, solution[i]);
             }
             Console.ReadLine();
         }
