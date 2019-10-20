@@ -62,8 +62,6 @@ namespace ConsoleApp1
             int rows = mat.GetLength(0);
             int columns = mat.GetLength(1);
 
-
-
             Console.WriteLine();
             for (var i = 0; i < rows; i++)
             {
