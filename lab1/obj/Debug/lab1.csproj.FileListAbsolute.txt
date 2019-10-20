@@ -5,3 +5,10 @@ C:\Users\Home\source\repos\Digital analysis\lab1\lab1\obj\Debug\lab1.csprojAssem
 C:\Users\Home\source\repos\Digital analysis\lab1\lab1\obj\Debug\lab1.csproj.CoreCompileInputs.cache
 C:\Users\Home\source\repos\Digital analysis\lab1\lab1\obj\Debug\lab1.exe
 C:\Users\Home\source\repos\Digital analysis\lab1\lab1\obj\Debug\lab1.pdb
+C:\Users\Home\VSProjects\Gauss\lab1\bin\Debug\lab1.exe.config
+C:\Users\Home\VSProjects\Gauss\lab1\bin\Debug\lab1.exe
+C:\Users\Home\VSProjects\Gauss\lab1\bin\Debug\lab1.pdb
+C:\Users\Home\VSProjects\Gauss\lab1\obj\Debug\lab1.csprojAssemblyReference.cache
+C:\Users\Home\VSProjects\Gauss\lab1\obj\Debug\lab1.csproj.CoreCompileInputs.cache
+C:\Users\Home\VSProjects\Gauss\lab1\obj\Debug\lab1.exe
+C:\Users\Home\VSProjects\Gauss\lab1\obj\Debug\lab1.pdb

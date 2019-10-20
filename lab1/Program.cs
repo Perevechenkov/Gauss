@@ -4,36 +4,19 @@ namespace ConsoleApp1
 {
     class Program
     {
-        public static double[,] CreateMatrix(int rows, int columns)
+        public static double[] GaussMethod(double[,] mat)
         {
-            var result = new double[rows, columns];
-            for (var i = 0; i < rows; i++)
-            {
-                for (var j = 0; j < columns; j++)
-                {
-                    Console.WriteLine("Введите {0} элемент {1} строки: ", j, i);
-                    result[i, j] = double.Parse(Console.ReadLine());
-                }
-            }
-            Print(result, rows, columns);
-            return result;
-        }
+            Print(mat);
+            int rows = mat.GetLength(0);
+            int columns = mat.GetLength(1);
+            double tmp, delta = 0.00001;
 
-        public static double[] GaussMethod(double[,] mat, int rows, int columns)
-        {
-            double tmp;
-            for (var iteration = 0; iteration < rows; iteration++)
+            for (var columnIterations = 0; columnIterations < rows; columnIterations++)
             {
-                var index = FindMaxRow(mat, iteration, rows);
-                if (index != iteration)
+                for (var i = columnIterations; i < rows; i++)
                 {
-                    SwapRows(ref mat, iteration, index, columns);
-                }
-
-                for (var i = iteration; i < rows; i++)
-                {
-                    tmp = mat[i, iteration];
-                    if (Math.Abs(tmp) > 0.00001)
+                    tmp = mat[i, columnIterations];
+                    if (Math.Abs(tmp) > delta)
                     {
                         for (var j = 0; j < columns; j++)
                         {
@@ -41,16 +24,17 @@ namespace ConsoleApp1
                         }
                     }
 
-                    if (i != iteration)
+                    if (i != columnIterations)
                     {
                         for (var j = 0; j < columns; j++)
                         {
-                            mat[i, j] -= mat[iteration, j];
+                            mat[i, j] -= mat[columnIterations, j];
                         }
                     }
                 }
-                Print(mat, rows, columns);
+                Print(mat);
             }
+
             var solution = new double[columns - 1];
             for (var i = 0; i < rows; i++)
             {
@@ -63,60 +47,46 @@ namespace ConsoleApp1
                     solution[i] -= solution[j] * mat[i, j];
                 }
             }
+
+            for (var i = 0; i < solution.Length; i++)
+            {
+                if (solution[i] < delta)
+                    solution[i] = 0;
+            }
+
             return solution;
         }
 
-        public static void Print(double[,] matrix, int rows, int columns)
+        public static void Print(double[,] mat)
         {
+            int rows = mat.GetLength(0);
+            int columns = mat.GetLength(1);
+
+
+
             Console.WriteLine();
             for (var i = 0; i < rows; i++)
             {
                 for (var j = 0; j < columns; j++)
                 {
-                    Console.Write(matrix[i, j] + " ");
+                    if ((mat[i, j] % 1).ToString().Length > 3)
+                        Console.Write(Math.Round(mat[i, j], 2) + " ");
+                    else Console.Write(mat[i, j] + " ");
                 }
                 Console.Write("\n");
             }
             Console.WriteLine();
         }
 
-        public static void SwapRows(ref double[,] matrix, int iteration, int index, int columns)
-        {
-            double tmp;
-            for (var i = 0; i < columns; i++)
-            {
-                tmp = matrix[iteration, i];
-                matrix[iteration, i] = matrix[index, i];
-                matrix[index, i] = tmp;
-            }
-        }
-
-        public static int FindMaxRow(double[,] matrix, int iteration, int rows)
-        {
-            var index = iteration;
-            var max = Math.Abs(matrix[iteration, iteration]);
-            for (int i = iteration + 1; i < rows; i++)
-            {
-                if (Math.Abs(matrix[i, iteration]) > max)
-                {
-                    max = Math.Abs(matrix[i, iteration]);
-                    index = i;
-                }
-            }
-            return index;
-        }
-
         static void Main(string[] args)
         {
-            var mat = new double[,] { { 1, 4, 3, 10 }, { 2, 1, -1, -1 }, { 3, -1, 1, 11 } };
-            var solution = GaussMethod(mat, 3, 4);
+            var inputMatrix = new double[,] { { 5, 1, 1, 2, 2 }, { 2, 4, 1, 2, 5 }, { 1, 1, 3, 1, 4 }, { 1, 1, -1, 3, 0 } };
+            var solution = GaussMethod(inputMatrix);
             for (var i = 0; i < solution.Length; i++)
             {
                 Console.WriteLine("X{0} = {1}", i + 1, solution[i]);
             }
             Console.ReadLine();
         }
-        //хммммммм :3
-        //UwU
     }
 }
