@@ -69,8 +69,8 @@ namespace ConsoleApp1
                     if ((mat[i, j] % 1).ToString().Length > 3)
                         mat[i, j] = Math.Round(mat[i, j], 2);
                     if (j == 4)
-                        Console.Write(" = {0}", mat[i, j]);
-                    else Console.Write("X{0} * {1} ", j + 1, mat[i, j]);
+                        Console.Write("= {0}", mat[i, j]);
+                    else Console.Write("X{0}*{1} ", j + 1, mat[i, j]);
                 }
                 Console.Write("\n");
             }
